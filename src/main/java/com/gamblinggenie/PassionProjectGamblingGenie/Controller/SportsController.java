@@ -1,4 +1,5 @@
 package com.gamblinggenie.PassionProjectGamblingGenie.Controller;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gamblinggenie.PassionProjectGamblingGenie.Models.MlbSchedule;
 import com.gamblinggenie.PassionProjectGamblingGenie.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ public class SportsController {
     
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @GetMapping("/login")
     public String loginScreen() {
