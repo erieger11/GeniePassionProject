@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class MLBservices {
     @Autowired
-    private UserRepo userRepo;
+    private  UserRepo userRepo;
 
     public List<MlbSchedule> fetchData(){
         return userRepo.findAll();

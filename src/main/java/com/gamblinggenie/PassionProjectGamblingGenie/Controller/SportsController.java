@@ -32,6 +32,10 @@ public class SportsController {
     public String historyPage() {
         return "history";
     }
+    @GetMapping("/selectedgame")
+    public String selectedGamePage() {
+        return "selectedGame";
+    }
 
 
     @GetMapping("/mlbschedule")

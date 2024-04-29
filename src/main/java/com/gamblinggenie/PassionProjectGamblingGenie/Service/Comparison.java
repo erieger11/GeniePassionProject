@@ -12,8 +12,12 @@ public class Comparison {
     private UserRepo userRepo;
 
     public String compareTeams(String team1, String team2) {
-        MlbSchedule team1Schedule = (MlbSchedule) userRepo.findByTeam(team1);
-        MlbSchedule team2Schedule = (MlbSchedule) userRepo.findByTeam(team2);
+        MlbSchedule team1Schedule = userRepo.findByTeam(team1);
+        MlbSchedule team2Schedule = userRepo.findByTeam(team2);
+
+        if (team1Schedule == null || team2Schedule == null) {
+            return "One or both teams not found";
+        }
 
         String result = "";
         if (team1Schedule.getWins() > team2Schedule.getWins()) {
@@ -26,4 +30,5 @@ public class Comparison {
 
         return result;
     }
+
 }
