@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@RestController
+@Controller
 public class SportsController {
     @Autowired
     private MLBservices mlbServices;
@@ -53,7 +53,6 @@ public class SportsController {
 //        if (updatedSchedule == null) {
 //            return "Schedule not found";
 //        }
-
         updatedSchedule.setTeam(schedule.getTeam());
         updatedSchedule.setWins(schedule.getWins());
         updatedSchedule.setLosses(schedule.getLosses());
@@ -79,4 +78,10 @@ public class SportsController {
     public String compareTeams(@PathVariable String team1, @PathVariable String team2) {
         return comparison.compareTeams(team1, team2);
     }
+    @GetMapping("/findTeam/{team}")
+    public MlbSchedule grabTeam(@PathVariable String team) {
+        return userRepo.findByTeam(team);
+        //this will be changed to incorporate the date
+    }
+
 }
