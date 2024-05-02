@@ -8,8 +8,10 @@ public class MlbSchedule {
     private long id;
     @Column(name = "team_name")
     private String team;
-       @Column
+    @Column
     private Integer wins;
+    @Column
+    private Integer losses;
 
     public long getId() {
         return id;
@@ -42,9 +44,6 @@ public class MlbSchedule {
     public void setLosses(Integer losses) {
         this.losses = losses;
     }
-
-    @Column
-    private Integer losses;
 
 
 
