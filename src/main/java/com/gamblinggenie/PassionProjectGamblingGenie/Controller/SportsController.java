@@ -4,6 +4,7 @@ import com.gamblinggenie.PassionProjectGamblingGenie.Models.TeamData;
 import com.gamblinggenie.PassionProjectGamblingGenie.Repo.UserRepo;
 import com.gamblinggenie.PassionProjectGamblingGenie.Service.SportsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,7 +61,6 @@ public class SportsController {
     public Map<String, Map<String, List<String>>> mlbStandingsByDivision(){
         return sportsService.mlbstandingsByDivision();
     }
-
 
 
 
