@@ -1,16 +1,13 @@
 package com.gamblinggenie.PassionProjectGamblingGenie.Controller;
 
-import com.gamblinggenie.PassionProjectGamblingGenie.Models.MlbSchedule;
+import com.gamblinggenie.PassionProjectGamblingGenie.Models.TeamData;
 import com.gamblinggenie.PassionProjectGamblingGenie.Repo.UserRepo;
 import com.gamblinggenie.PassionProjectGamblingGenie.Service.SportsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class SportsController {
@@ -21,15 +18,15 @@ public class SportsController {
     private UserRepo userRepo;
 
     @GetMapping("/getData")
-    public List<MlbSchedule> dataFetch() {
+    public List<TeamData> dataFetch() {
         return sportsService.dataFetch();
     }
     @PostMapping("/save")
-    public String saveSchedule(@RequestBody MlbSchedule schedule) {
+    public String saveSchedule(@RequestBody TeamData schedule) {
         return sportsService.saveSchedule(schedule);
     }
     @PutMapping("/update/{id}")
-    public String updateSchedule(@PathVariable long id, @RequestBody MlbSchedule schedule) {
+    public String updateSchedule(@PathVariable long id, @RequestBody TeamData schedule) {
         return sportsService.updateSchedule(id, schedule);
     }
     @DeleteMapping("/delete/{id}")
@@ -41,7 +38,7 @@ public class SportsController {
         return sportsService.compareTeams(team1, team2);
     }
     @GetMapping("/findTeam/{team}")
-    public MlbSchedule findByTeam(@PathVariable String team) {
+    public TeamData findByTeam(@PathVariable String team) {
         //try {
             return sportsService.findByTeam(team);
 //        }catch (Exception e) {
@@ -51,6 +48,20 @@ public class SportsController {
 //        }
 
     }
+    @GetMapping("/mlbstandings")
+    public List<String> mlbStandings(){
+     return sportsService.mlbstandings();
+    }
+    @GetMapping("/mlbstandings/league")
+    public Map<String, List<String>> mlbStandingsByLeague(){
+        return sportsService.mlbstandingsByLeague();
+    }
+    @GetMapping("/mlbstandings/league/division")
+    public Map<String, Map<String, List<String>>> mlbStandingsByDivision(){
+        return sportsService.mlbstandingsByDivision();
+    }
+
+
 
 
 }
