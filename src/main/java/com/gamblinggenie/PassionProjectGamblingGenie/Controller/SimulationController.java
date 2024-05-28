@@ -1,7 +1,4 @@
 package com.gamblinggenie.PassionProjectGamblingGenie.Controller;
-
-
-import com.gamblinggenie.PassionProjectGamblingGenie.Models.TeamData;
 import com.gamblinggenie.PassionProjectGamblingGenie.Service.SimulationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
