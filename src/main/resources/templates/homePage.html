@@ -34,78 +34,176 @@
     </div>
 </nav>
 
-<div class="container mt-3">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 mb-3">
-            <a href="/selectedgame">
-                <div class="card" id="gameOne">
-                    <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">GAME 1</p>
+        <div class="col-md-6 games-container">
+            <div class="schedule">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <a href="/selectedgame">
+                            <div class="card" id="gameOne">
+                                <img class="card-img-top" src="" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">GAME 1</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <a href="/selectedgame">
+                            <div class="card" id="gameTwo">
+                                <img class="card-img-top" src="" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">GAME 2</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </a>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <a href="/selectedgame">
+                            <div class="card" id="gameThree">
+                                <img class="card-img-top" src="" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">GAME 3</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <a href="/selectedgame">
+                            <div class="card" id="gameFour">
+                                <img class="card-img-top" src="" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">GAME 4</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <a href="/selectedgame">
+                            <div class="card" id="gameFive">
+                                <!-- Use a valid image URL or remove the img tag -->
+                                <img class="card-img-top" src="" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">GAME 5</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3 mb-3">
-            <a href="/selectedgame">
-                <div class="card" id="gameTwo">
-                    <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">GAME 2</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3 mb-3">
-            <a href="/selectedgame">
-                <div class="card" id="gameThree">
-                    <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">GAME 3</p>
-                    </div>
-                </div>
-            </a>
+        <div class="col-md-6">
+            <div id="standings"></div>
         </div>
     </div>
-
-
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="row">National League</th>
-        </tr>
-        </thead>
-        <thead class="table-group-divider">
-        <tr>
-            <th scope="col">Team</th>
-            <th scope="col">W</th>
-            <th scope="col">L</th>
-            <th scope="col">GP</th>
-        </tr>
-        </thead>
-        <tbody class="table-group-divider">
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
-
 </div>
+
+<script>
+    fetch('http://localhost:8080/mlbstandings/league/division')
+    .then(response => response.json())
+    .then(data => {
+        const standingsContainer = document.getElementById('standings');
+
+        Object.keys(data).forEach(league => {
+            const leagueData = data[league];
+
+            const leagueListGroup = document.createElement('div');
+            leagueListGroup.classList.add('list-group', 'mb-3');
+
+            const leagueItem = document.createElement('a');
+            leagueItem.href = "#";
+            leagueItem.classList.add('list-group-item', 'list-group-item-action', 'active');
+
+            const leagueHeader = document.createElement('div');
+            leagueHeader.classList.add('d-flex', 'w-100', 'justify-content-between');
+
+            const leagueTitle = document.createElement('h5');
+            leagueTitle.classList.add('mb-1', 'league-title');
+
+            leagueTitle.textContent = league;
+
+            const leagueSmall = document.createElement('small');
+
+            leagueHeader.appendChild(leagueTitle);
+            leagueHeader.appendChild(leagueSmall);
+
+            const leagueContent = document.createElement('p');
+            leagueContent.classList.add('mb-1', 'league-content'); // Added 'league-content' class for styling
+
+            leagueContent.textContent = 'Team - Wins - Losses - Games Played';
+
+            const leagueSmallPrint = document.createElement('small');
+
+            leagueItem.appendChild(leagueHeader);
+            leagueItem.appendChild(leagueContent);
+            leagueItem.appendChild(leagueSmallPrint);
+
+            leagueListGroup.appendChild(leagueItem);
+
+            Object.keys(leagueData).forEach(division => {
+                const divisionData = leagueData[division];
+
+                const divisionItem = document.createElement('a');
+                divisionItem.href = "#";
+                divisionItem.classList.add('list-group-item', 'list-group-item-action', 'division-item'); // Added 'division-item' class for styling
+
+                const divisionHeader = document.createElement('div');
+                divisionHeader.classList.add('d-flex', 'w-100', 'justify-content-between');
+
+                const divisionTitle = document.createElement('h5');
+                divisionTitle.classList.add('mb-1', 'division-title'); // Added 'division-title' class for styling
+
+                divisionTitle.textContent = division;
+
+                const divisionSmall = document.createElement('small');
+
+                divisionHeader.appendChild(divisionTitle);
+                divisionHeader.appendChild(divisionSmall);
+
+                const divisionContent = document.createElement('p');
+                divisionContent.classList.add('mb-1', 'division-content'); // Added 'division-content' class for styling
+
+                const divisionSmallPrint = document.createElement('small');
+
+                divisionItem.appendChild(divisionHeader);
+                divisionItem.appendChild(divisionContent);
+                divisionItem.appendChild(divisionSmallPrint);
+
+                leagueListGroup.appendChild(divisionItem);
+
+                divisionData.forEach(team => {
+                    const teamData = team.split(' : ');
+
+                    const teamItem = document.createElement('a');
+                    teamItem.href = "#";
+                    teamItem.classList.add('list-group-item', 'list-group-item-action', 'team-item'); // Added 'team-item' class for styling
+
+                    const teamContent = document.createElement('p');
+                    teamContent.classList.add('mb-1', 'team-content'); // Added 'team-content' class for styling
+
+                    teamContent.textContent = teamData.join(' - ');
+
+                    teamItem.appendChild(teamContent);
+
+                    leagueListGroup.appendChild(teamItem);
+                });
+            });
+
+            standingsContainer.appendChild(leagueListGroup);
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+</script>
 
 </body>
 </html>

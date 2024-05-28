@@ -1,11 +1,56 @@
 body {
-    background: rgb(0,45,114);
-    background: -moz-linear-gradient(90deg, rgba(0,45,114,1) 0%, rgba(17,17,17,1) 50%, rgba(213,0,50,1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(0,45,114,1) 0%, rgba(17,17,17,1) 50%, rgba(213,0,50,1) 100%);
-    background: linear-gradient(90deg, rgba(0,45,114,1) 0%, rgba(17,17,17,1) 50%, rgba(213,0,50,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#002d72",endColorstr="#d50032",GradientType=1);
+    background: rgb(0, 45, 114);
+    background: -moz-linear-gradient(90deg, rgba(0, 45, 114, 1) 0%, rgba(17, 17, 17, 1) 50%, rgba(213, 0, 50, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(0, 45, 114, 1) 0%, rgba(17, 17, 17, 1) 50%, rgba(213, 0, 50, 1) 100%);
+    background: linear-gradient(90deg, rgba(0, 45, 114, 1) 0%, rgba(17, 17, 17, 1) 50%, rgba(213, 0, 50, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#002d72", endColorstr="#d50032", GradientType=1);
 }
 
 nav.navbar {
     background-color: white !important;
+}
+
+.card {
+    width: 150px !important;
+    height: 100px !important;
+    padding: 5px;
+}
+
+.list-group {
+    background-color: transparent; /* Clear background color */
+    color: white; /* White text color */
+    padding: 200px;
+}
+
+.list-group-item {
+    background-color: transparent !important; /* Clear background color for list items */
+    color: white !important; /* White text color */
+}
+
+/* Custom classes for specific elements */
+.league-title {
+    font-weight: bold; /* Bold font for titles */
+    border-bottom: 1px solid white; /* White bottom border */
+}
+
+.division-title {
+    font-weight: bold; /* Bold font for titles */
+    border-top: 1px solid white; /* White top border */
+    border-bottom: 1px solid white; /* White bottom border */
+}
+
+.team-content {
+    font-weight: bold; /* Bold font for titles */
+    border: none; /* Remove all borders */
+}
+
+.league-content,
+.division-content {
+    font-style: italic; /* Italic font for content */
+}
+
+#standings {
+  width: 525px; /* Adjust the width as needed */
+  margin-top: 10px; /* Adjust the margin from the top */
+  margin-left: 50px; /* Adjust the margin from the right */
 }
