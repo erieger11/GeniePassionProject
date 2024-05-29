@@ -19,7 +19,7 @@ public class SimulationController {
             try {
                 while (!simulationService.isGameOver()) {
                     emitter.send(simulationService.baseballGameInning());
-                    Thread.sleep(500);
+                    Thread.sleep(400);
                 }
                 emitter.send(simulationService.baseballGameInning());
                 emitter.complete();
