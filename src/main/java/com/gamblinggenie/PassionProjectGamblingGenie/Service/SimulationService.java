@@ -16,25 +16,33 @@ public class SimulationService {
     private boolean pitchContact = false;
 
     public String baseballGameInning() {
+        if (inning >= 10) {
+            return "GAME OVER\nHome : " + homeTeamScore + " - " + "Away : " + awayTeamScore;
+        }
+
         pitchContact = false;
         String pitchOutcome = pitchResult();
         String atBatOutcome = atBatResult();
         String hitOutcome = "";
+
         if (pitchContact) {
             hitOutcome = hitOutcome();
         }
+
         if (outs == 3) {
             outs = 0;
             inning += 0.5;
         }
-        if (inning >= 9) {
-            return "GAME OVER\nHome : " + homeTeamScore + " - " + "Away : " + awayTeamScore;
-        }
+
         return "Home : " + homeTeamScore + " - " + "Away : " + awayTeamScore + "\n" +
                 "Inning : " + inning + "\n" +
                 pitchOutcome + "\n" +
                 atBatOutcome + "\n" +
                 hitOutcome;
+    }
+
+    public boolean isGameOver() {
+        return inning >= 10;
     }
 
     public String atBatResult() {
